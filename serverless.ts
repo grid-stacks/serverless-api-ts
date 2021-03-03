@@ -27,13 +27,13 @@ const serverlessConfiguration: Serverless = {
 		},
 	},
 	functions: {
-		hello: {
-			handler: "handler.hello",
+		api_home: {
+			handler: "handler.api_home",
 			events: [
 				{
 					http: {
 						method: "get",
-						path: "hello",
+						path: "api_home",
 					},
 				},
 			],
