@@ -34,6 +34,13 @@ const serverlessConfiguration: Serverless = {
 			TEST: "${opt:stage, 'dev'}",
 			TABLE_NAME: "${self:custom.tableName}",
 		},
+		iamRoleStatements: [
+			{
+				Effect: "Allow",
+				Action: ["dynamodb:*"],
+				Resource: "*",
+			},
+		],
 	},
 	functions: {
 		api_home: {
