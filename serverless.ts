@@ -43,13 +43,13 @@ const serverlessConfiguration: Serverless = {
 		],
 	},
 	functions: {
-		api_home: {
-			handler: "handler.api_home",
+		home: {
+			handler: "lambda-functions/starting.home",
 			events: [
 				{
 					http: {
 						method: "get",
-						path: "api_home",
+						path: "/",
 					},
 				},
 			],
