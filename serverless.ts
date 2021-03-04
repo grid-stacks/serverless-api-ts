@@ -54,6 +54,25 @@ const serverlessConfiguration: Serverless = {
 					BucketName: "sls-api-ts-bucket-10091986",
 				},
 			},
+			SlsApiTsDynamoDB: {
+				Type: "AWS::DynamoDB::Table",
+				Properties: {
+					TableName: "SlsApiTs-Customers",
+					AttributeDefinitions: [
+						{
+							AttributeName: "ID",
+							AttributeType: "S",
+						},
+					],
+					KeySchema: [
+						{
+							AttributeName: "ID",
+							KeyType: "HASH",
+						},
+					],
+					BillingMode: "PAY_PER_REQUEST",
+				},
+			},
 		},
 	},
 };
