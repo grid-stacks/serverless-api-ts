@@ -13,9 +13,15 @@ const serverlessConfiguration: Serverless = {
 			webpackConfig: "./webpack.config.js",
 			includeModules: true,
 		},
+		s3Sync: [
+			{
+				bucketName: "sls-api-ts-bucket-10091986",
+				localDir: "S3",
+			},
+		],
 	},
 	// Add the serverless-webpack plugin
-	plugins: ["serverless-webpack"],
+	plugins: ["serverless-webpack", "serverless-s3-sync"],
 	provider: {
 		name: "aws",
 		runtime: "nodejs14.x",
