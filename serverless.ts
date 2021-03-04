@@ -39,6 +39,17 @@ const serverlessConfiguration: Serverless = {
 			],
 		},
 	},
+
+	resources: {
+		Resources: {
+			SlSApiTsBucket: {
+				Type: "AWS::S3::Bucket",
+				Properties: {
+					BucketName: "sls-api-ts-bucket-10091986",
+				},
+			},
+		},
+	},
 };
 
 module.exports = serverlessConfiguration;

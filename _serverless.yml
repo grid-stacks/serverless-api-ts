@@ -1,0 +1,56 @@
+service: sls-api-ts
+
+frameworkVersion: "2"
+
+provider:
+    name: aws
+    runtime: nodejs14.x
+    memorySize: 512
+    timeout: 10
+    profile: default
+
+# you can overwrite defaults here
+#  stage: dev
+#  region: us-east-1
+
+# you can add statements to the Lambda function's IAM Role here
+#  iamRoleStatements:
+#    - Effect: "Allow"
+#      Action:
+#        - "s3:ListBucket"
+#      Resource: { "Fn::Join" : ["", ["arn:aws:s3:::", { "Ref" : "ServerlessDeploymentBucket" } ] ]  }
+#    - Effect: "Allow"
+#      Action:
+#        - "s3:PutObject"
+#      Resource:
+#        Fn::Join:
+#          - ""
+#          - - "arn:aws:s3:::"
+#            - "Ref" : "ServerlessDeploymentBucket"
+#            - "/*"
+
+# you can define service wide environment variables here
+#  environment:
+#    variable1: value1
+
+# you can add packaging information here
+#package:
+#  include:
+#    - include-me.js
+#    - include-me-dir/**
+#  exclude:
+#    - exclude-me.js
+#    - exclude-me-dir/**
+
+functions:
+    api_home:
+        handler: handler.api_home
+        events:
+            - http: get api_home
+
+resources:
+    Resources:
+        SlSApiTsBucket:
+            Type: AWS::S3::Bucket
+            Properties:
+                BucketName: SlSApiTsBucket-10091986
