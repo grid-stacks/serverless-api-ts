@@ -19,6 +19,7 @@ const serverlessConfiguration: Serverless = {
 				localDir: "S3",
 			},
 		],
+		tableName: "SlsApiTs-Customers",
 	},
 	// Add the serverless-webpack plugin
 	plugins: ["serverless-webpack", "serverless-s3-sync"],
@@ -30,6 +31,8 @@ const serverlessConfiguration: Serverless = {
 		},
 		environment: {
 			AWS_NODEJS_CONNECTION_REUSE_ENABLED: "1",
+			TEST: "${opt:stage, 'dev'}",
+			TABLE_NAME: "${self:custom.tableName}",
 		},
 	},
 	functions: {
@@ -57,7 +60,7 @@ const serverlessConfiguration: Serverless = {
 			SlsApiTsDynamoDB: {
 				Type: "AWS::DynamoDB::Table",
 				Properties: {
-					TableName: "SlsApiTs-Customers",
+					TableName: "${self:custom.tableName}",
 					AttributeDefinitions: [
 						{
 							AttributeName: "ID",
